@@ -1,9 +1,9 @@
 /* css/switch.css */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/* Dark Blue Theme: Inspired by the Switch's deep background colors */
+/* Dark Blue Theme */
 body {
-    background-color: #192038; /* Deep Midnight Blue */
+    background-color: #192038; 
     color: #fff;
     font-family: 'Roboto', sans-serif;
     display: flex;
@@ -20,22 +20,22 @@ body {
     box-shadow: 0 0 70px rgba(0, 0, 0, 0.7);
     border-radius: 12px;
     overflow: hidden;
-    background-color: #121626; /* Slightly darker inner background */
-    border: 3px solid #00c0ff; /* Accent border */
+    background-color: #121626; 
+    border: 3px solid #00c0ff; 
 }
+
+/* View Management */
+.active-view { display: block !important; }
+.inactive-view { display: none !important; }
 
 /* --- HOME SCREEN --- */
-#home-screen {
-    padding: 30px;
-    height: 100%;
-}
-
+#home-screen { padding: 30px; height: 100%; }
 header {
     display: flex;
     justify-content: space-between;
     font-size: 1.2em;
     padding-bottom: 25px;
-    color: #00c0ff; /* Light Blue Accent for headers */
+    color: #00c0ff;
 }
 
 #game-grid {
@@ -49,7 +49,7 @@ header {
 .game-tile {
     width: 100%;
     height: 150px;
-    background-color: #2e3553; /* Tile background */
+    background-color: #2e3553; 
     border-radius: 12px;
     display: flex;
     justify-content: center;
@@ -66,14 +66,9 @@ header {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
 }
 
-.game-tile.placeholder {
-    opacity: 0.6;
-    background-color: #22253a;
-    font-size: 0.8em;
-}
-
+.game-tile.placeholder { opacity: 0.6; background-color: #22253a; font-size: 0.8em; }
 .game-tile.running {
-    background-color: #ff5050; /* Switch-Red Accent */
+    background-color: #ff5050; 
     transform: scale(1.15);
     box-shadow: 0 0 25px rgba(255, 80, 80, 0.9);
     border: 4px solid #fff;
@@ -81,21 +76,81 @@ header {
     z-index: 10;
     cursor: default;
 }
+.game-tile[data-placeholder="true"] { cursor: default; }
+.drop-area.active { border: 2px dashed #00c0ff; background-color: #1f253a; }
 
-/* Drop area styling */
-.drop-area.active {
-    border: 2px dashed #00c0ff;
-    background-color: #1f253a;
+/* --- SHARED MENU STYLES --- */
+.menu-container {
+    padding: 30px 100px;
+    height: 100%;
+    overflow-y: auto; /* Scrollable menu */
+    text-align: center;
 }
+.menu-title {
+    color: #fff;
+    font-size: 2.5em;
+    border-bottom: 2px solid #00c0ff;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+.menu-list { max-width: 600px; margin: 0 auto; }
+.menu-item {
+    font-size: 1.2em;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    background-color: #2e3553;
+    border-radius: 8px;
+    transition: background-color 0.15s;
+}
+.menu-action {
+    background-color: #00c0ff; 
+    color: #121626;
+    font-weight: bold;
+    cursor: pointer;
+}
+.menu-action:hover { background-color: #00a0e0; }
 
-/* --- EMULATION VIEW --- */
-#emulation-view {
-    width: 100%;
-    height: 100%;
-    background-color: black;
+/* --- NEWS FEED SPECIFIC --- */
+.news-item {
+    text-align: left;
+    margin-bottom: 25px;
+    border-bottom: 1px dashed #3f475f;
+    padding-bottom: 15px;
 }
-#game-canvas {
-    width: 100%;
-    height: 100%;
-    display: block; 
+.news-item h4 { color: #00c0ff; margin-bottom: 5px; }
+.news-item p { font-size: 0.9em; color: #aaa; }
+
+/* --- CONTROLLER PAIRING SPECIFIC --- */
+#controller-status {
+    padding: 20px;
+    background-color: #191c28;
+    border: 1px solid #3f475f;
+    border-radius: 8px;
+    min-height: 150px;
+    margin-bottom: 20px;
 }
+.controller-info {
+    font-size: 1.1em;
+    padding: 8px 0;
+    color: #eee;
+    text-align: center;
+}
+.controller-info.active { color: #35ff35; font-weight: bold; }
+.controller-info.pending { color: #ffeb3b; }
+
+
+/* --- EMULATION EXIT PROMPT --- */
+#exit-prompt {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+#exit-prompt:hover { background: rgba(255, 80, 80, 0.8); }
