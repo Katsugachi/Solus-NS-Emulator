@@ -8,33 +8,54 @@
 </head>
 <body>
     <div id="emulator-container">
+        
         <div id="home-screen" class="active-view">
             <header>
-                <span id="time">00:00 AM</span> <span id="status-icons"><span style="color:#00c0ff;">WIFI</span> | <span style="color:#00c0ff;">FULL</span> BATT</span>
+                <span id="time">00:00 AM</span>
+                <span id="status-icons"></span>
             </header>
 
             <div id="game-grid" class="drop-area">
                 <div class="game-tile" data-placeholder="true">Drop .NSP/.XCI Here</div>
-                <div class="game-tile placeholder" data-action="settings">System Settings</div> <div class="game-tile placeholder" data-action="eshop">eShop</div>
+                <div class="game-tile placeholder" data-action="settings">System Settings</div>
+                <div class="game-tile placeholder" data-action="eshop">eShop</div>
                 <div class="game-tile placeholder" data-action="album">Album</div>
-                <div class="game-tile placeholder">News</div>
-                <div class="game-tile placeholder">Controller Pairing</div>
-            </div>
+                <div class="game-tile placeholder" data-action="news">News</div> <div class="game-tile placeholder" data-action="pair">Controller Pairing</div> </div>
             
-            <p id="status-message" style="margin-top: 50px; color: #aaa;">Status: Awaiting Game File Drop...</p>
+            <p id="status-message" style="margin-top: 50px; color: #aaa;">Status: Web Emu-1 Ready.</p>
         </div>
 
-        <div id="settings-view" class="inactive-view">
+        <div id="news-view" class="inactive-view menu-container">
+            <h2 class="menu-title">News Feed</h2>
+            <div class="news-list" id="news-list">
+                </div>
+            <div class="menu-item menu-action" data-action="exit-news">Exit News</div>
+        </div>
+        
+        <div id="pair-view" class="inactive-view menu-container">
+            <h2 class="menu-title">Pair Controllers</h2>
+            <p style="color:#aaa; text-align: center;">Press and hold a button on your controller...</p>
+            <div id="controller-status">
+                </div>
+            <div class="menu-item menu-action" data-action="exit-pair">Done</div>
+        </div>
+
+        <div id="settings-view" class="inactive-view menu-container">
             <h2 class="menu-title">System Settings</h2>
             <div class="menu-list">
                 <div class="menu-item">Console Nickname: <span id="console-name">Web Emu-1</span></div>
                 <div class="menu-item">System Version: <span id="system-version">PoC 1.0.0</span></div>
-                <div class="menu-item menu-action" data-action="exit-settings">Exit</div>
+                <div class="menu-item">Language: <span id="system-language">English (US)</span></div>
+                <div class="menu-item menu-action" data-action="exit-settings">Exit Settings</div>
             </div>
         </div>
 
         <div id="emulation-view" class="inactive-view">
             <canvas id="game-canvas" width="1280" height="720"></canvas>
+            <div id="exit-prompt" onclick="window.EmulatorShell.returnToHome()" title="Click to return home">
+                <p>Click anywhere to simulate returning to the Home Screen.</p>
+                <p style="font-size: 0.8em; opacity: 0.7;">(Emulator Process Shutdown)</p>
+            </div>
         </div>
     </div>
 
