@@ -1,0 +1,101 @@
+/* css/switch.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Dark Blue Theme: Inspired by the Switch's deep background colors */
+body {
+    background-color: #192038; /* Deep Midnight Blue */
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+#emulator-container {
+    width: 1280px; 
+    height: 720px;
+    box-shadow: 0 0 70px rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #121626; /* Slightly darker inner background */
+    border: 3px solid #00c0ff; /* Accent border */
+}
+
+/* --- HOME SCREEN --- */
+#home-screen {
+    padding: 30px;
+    height: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2em;
+    padding-bottom: 25px;
+    color: #00c0ff; /* Light Blue Accent for headers */
+}
+
+#game-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 30px;
+    padding-top: 40px;
+    min-height: 500px;
+}
+
+.game-tile {
+    width: 100%;
+    height: 150px;
+    background-color: #2e3553; /* Tile background */
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: transform 0.15s, box-shadow 0.15s;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.game-tile:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.game-tile.placeholder {
+    opacity: 0.6;
+    background-color: #22253a;
+    font-size: 0.8em;
+}
+
+.game-tile.running {
+    background-color: #ff5050; /* Switch-Red Accent */
+    transform: scale(1.15);
+    box-shadow: 0 0 25px rgba(255, 80, 80, 0.9);
+    border: 4px solid #fff;
+    position: relative;
+    z-index: 10;
+    cursor: default;
+}
+
+/* Drop area styling */
+.drop-area.active {
+    border: 2px dashed #00c0ff;
+    background-color: #1f253a;
+}
+
+/* --- EMULATION VIEW --- */
+#emulation-view {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+#game-canvas {
+    width: 100%;
+    height: 100%;
+    display: block; 
+}
