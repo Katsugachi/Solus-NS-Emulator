@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Solus NS Experiment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/switch.css">
+</head>
+<body>
+    <div id="emulator-container">
+        <div id="home-screen" class="active-view">
+            <header>
+                <span id="time">00:00 AM</span> <span id="status-icons"><span style="color:#00c0ff;">WIFI</span> | <span style="color:#00c0ff;">FULL</span> BATT</span>
+            </header>
+
+            <div id="game-grid" class="drop-area">
+                <div class="game-tile" data-placeholder="true">Drop .NSP/.XCI Here</div>
+                <div class="game-tile placeholder" data-action="settings">System Settings</div> <div class="game-tile placeholder" data-action="eshop">eShop</div>
+                <div class="game-tile placeholder" data-action="album">Album</div>
+                <div class="game-tile placeholder">News</div>
+                <div class="game-tile placeholder">Controller Pairing</div>
+            </div>
+            
+            <p id="status-message" style="margin-top: 50px; color: #aaa;">Status: Awaiting Game File Drop...</p>
+        </div>
+
+        <div id="settings-view" class="inactive-view">
+            <h2 class="menu-title">System Settings</h2>
+            <div class="menu-list">
+                <div class="menu-item">Console Nickname: <span id="console-name">Web Emu-1</span></div>
+                <div class="menu-item">System Version: <span id="system-version">PoC 1.0.0</span></div>
+                <div class="menu-item menu-action" data-action="exit-settings">Exit</div>
+            </div>
+        </div>
+
+        <div id="emulation-view" class="inactive-view">
+            <canvas id="game-canvas" width="1280" height="720"></canvas>
+        </div>
+    </div>
+
+    <script src="core/cpu-aot.js"></script>
+    <script src="core/gpu-webgpu.js"></script>
+    <script src="core/wasm-loader.js"></script>
+    <script src="io/input.js"></script>
+    <script src="io/audio.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
